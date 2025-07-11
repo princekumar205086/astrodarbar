@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ASTRODARBAR",
   description: "Astrodarbar is a platform for sharing and exploring astrological insights. Connect with astrologers, share your experiences, and discover the cosmic connections that shape our lives.",
+  other: {
+    "google-site-verification": "-N7EGdN2odl110-wU-YASwVu8GPWprbEqEsFvxHnGEc",
+  },
 };
 
 export default function RootLayout({
