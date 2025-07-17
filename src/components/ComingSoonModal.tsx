@@ -103,6 +103,23 @@ export function ComingSoonModal() {
                 personalized dashboards, and much more!
               </p>
             </motion.div>
+            {/* contact info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-4"
+            >
+              <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+                For inquiries, please call us:
+              </p>
+              <p className="text-purple-200 text-sm">
+                Astrologer: Pandit Shri Suraj Bhardwaj
+              </p>
+              <p className="text-purple-200 text-sm">
+                Phone: +91 9471661636
+              </p>
+            </motion.div>
 
             {/* Action Button */}
             <motion.div

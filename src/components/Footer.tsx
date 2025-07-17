@@ -55,18 +55,18 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center text-gray-400">
                 <Mail className="w-4 h-4 mr-3" />
-                <span className="text-sm">info@astrodarbar.com</span>
+                <span className="text-sm">info@astrodarbar.in</span>
               </div>
               <div className="flex items-center text-gray-400">
                 <Phone className="w-4 h-4 mr-3" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">+91 9471661636</span>
               </div>
               <div className="flex items-start text-gray-400">
                 <MapPin className="w-4 h-4 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-sm">
-                  123 Cosmic Plaza, Star Avenue,<br />
-                  Astrology District, Mumbai - 400001,<br />
-                  Maharashtra, India
+                  Ram Ratan Ji Nagar,<br />
+                  Rambagh, Purnia - 854301,<br />
+                  Bihar, India
                 </span>
               </div>
             </div>
