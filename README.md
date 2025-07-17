@@ -199,8 +199,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support and questions:
-- 📧 Email: support@astrodarbar.com
-- 🌐 Website: [astrodarbar.com](https://astrodarbar.com)
+- 📧 Email: support@astrodarbar.in
+- 🌐 Website: [astrodarbar.in](https://astrodarbar.in)
 - 📱 Phone: +91 98765 43210
 
 ---

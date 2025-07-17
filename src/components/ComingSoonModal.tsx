@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { X, Star, Sparkles, Rocket } from "lucide-react"
+import Link from "next/link"
 
 export function ComingSoonModal() {
   const [isOpen, setIsOpen] = useState(false)
@@ -114,10 +115,10 @@ export function ComingSoonModal() {
                 For inquiries, please call us:
               </p>
               <p className="text-purple-200 text-sm">
-                Astrologer: Pandit Shri Suraj Bhardwaj
+                Astrologer: Pandit Shree Suraj Bhardwaj
               </p>
               <p className="text-purple-200 text-sm">
-                Phone: +91 9471661636
+                Phone: <Link href="tel:+919471661636">+91 9471661636</Link>
               </p>
             </motion.div>
 
