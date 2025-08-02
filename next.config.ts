@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
   // Redirects for SEO consistency
   async redirects() {
     return [
+      // Redirect www to non-www
       {
         source: '/:path*',
         has: [
