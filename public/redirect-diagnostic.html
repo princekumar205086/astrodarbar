@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRODARBAR - Redirect Diagnostic Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .success { background: rgba(34, 197, 94, 0.2); border: 2px solid #22c55e; }
+        .error { background: rgba(239, 68, 68, 0.2); border: 2px solid #ef4444; }
+        .warning { background: rgba(245, 158, 11, 0.2); border: 2px solid #f59e0b; }
+        .info { background: rgba(59, 130, 246, 0.2); border: 2px solid #3b82f6; }
+        button {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover { background: #6d28d9; }
+        .test-results { margin-top: 20px; }
+        .url-test { margin: 10px 0; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 5px; }
+        .hosting-info { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 ASTRODARBAR - Redirect Diagnostic Tool</h1>
+        
+        <div class="status error">
+            <strong>CRITICAL ISSUE:</strong> Google Search Console is reporting "Redirect error" for www.astrodarbar.in
+        </div>
+        
+        <div class="status info">
+            <strong>Current URL:</strong> <span id="currentUrl"></span><br>
+            <strong>Should redirect to:</strong> https://astrodarbar.in
+        </div>
+        
+        <h2>🔍 Immediate Actions Required</h2>
+        
+        <div class="hosting-info">
+            <h3>1. Identify Your Hosting Provider</h3>
+            <p>We need to know where your website is hosted to fix this properly:</p>
+            <ul>
+                <li><strong>Vercel:</strong> Dashboard → Domains → Add redirect rule</li>
+                <li><strong>Netlify:</strong> Add _redirects file or configure in dashboard</li>
+                <li><strong>Cloudflare:</strong> Rules → Redirect Rules</li>
+                <li><strong>cPanel/Apache:</strong> Ensure .htaccess is in root directory</li>
+                <li><strong>Other:</strong> Check hosting provider documentation</li>
+            </ul>
+        </div>
+        
+        <h3>2. Test Current Redirect Status</h3>
+        <button onclick="testRedirects()">Test All URLs</button>
+        <button onclick="openRedirectChecker()">Open Online Redirect Checker</button>
+        <button onclick="openDNSChecker()">Check DNS Records</button>
+        
+        <div id="testResults" class="test-results"></div>
+        
+        <h3>3. Common Hosting Provider Solutions</h3>
+        
+        <div class="hosting-info">
+            <h4>🔹 If using Vercel:</h4>
+            <ol>
+                <li>Go to Vercel Dashboard → Your Project → Settings → Domains</li>
+                <li>Add "astrodarbar.in" as PRIMARY domain</li>
+                <li>Add "www.astrodarbar.in" as REDIRECT domain</li>
+                <li>Save and wait for deployment</li>
+            </ol>
+        </div>
+        
+        <div class="hosting-info">
+            <h4>🔹 If using Netlify:</h4>
+            <ol>
+                <li>Go to Site Dashboard → Domain Settings</li>
+                <li>Set "astrodarbar.in" as primary domain</li>
+                <li>Add "www.astrodarbar.in" as domain alias with redirect</li>
+                <li>OR add to _redirects file: <code>https://www.astrodarbar.in/* https://astrodarbar.in/:splat 301!</code></li>
+            </ol>
+        </div>
+        
+        <div class="hosting-info">
+            <h4>🔹 If using Cloudflare:</h4>
+            <ol>
+                <li>Go to Cloudflare Dashboard → Rules → Redirect Rules</li>
+                <li>Create new rule:</li>
+                <li>Field: Hostname, Operator: equals, Value: www.astrodarbar.in</li>
+                <li>Then: Dynamic redirect to: concat("https://astrodarbar.in", http.request.uri.path)</li>
+                <li>Status: 301 - Moved Permanently</li>
+            </ol>
+        </div>
+        
+        <div class="hosting-info">
+            <h4>🔹 If using cPanel/Apache:</h4>
+            <ol>
+                <li>Ensure .htaccess file is in the ROOT directory (public_html/)</li>
+                <li>Verify Apache mod_rewrite is enabled</li>
+                <li>Check file permissions (644 for .htaccess)</li>
+                <li>Contact hosting support if needed</li>
+            </ol>
+        </div>
+        
+        <h3>4. DNS Configuration</h3>
+        <div class="hosting-info">
+            <p>Ensure these DNS records exist:</p>
+            <ul>
+                <li><strong>A Record:</strong> @ → Your server IP</li>
+                <li><strong>A Record:</strong> www → Same server IP</li>
+                <li><strong>OR CNAME:</strong> www → astrodarbar.in</li>
+            </ul>
+        </div>
+        
+        <h3>5. After Configuration</h3>
+        <div class="status warning">
+            <strong>Important:</strong> 
+            <ul>
+                <li>Wait 24-48 hours for DNS propagation</li>
+                <li>Test redirects using the tools above</li>
+                <li>Only request indexing for https://astrodarbar.in (not www)</li>
+                <li>Clear cache in Google Search Console</li>
+            </ul>
+        </div>
+        
+        <div class="status info">
+            <strong>Contact Information:</strong><br>
+            If you need help identifying your hosting provider or configuring redirects, please provide:<br>
+            1. Where you purchased your domain (GoDaddy, Namecheap, etc.)<br>
+            2. Where your website is hosted (Vercel, Netlify, etc.)<br>
+            3. If you're using Cloudflare or similar CDN
+        </div>
+    </div>
+    
+    <script>
+        // Display current URL
+        document.getElementById('currentUrl').textContent = window.location.href;
+        
+        function testRedirects() {
+            const testUrls = [
+                'http://www.astrodarbar.in',
+                'https://www.astrodarbar.in',
+                'http://astrodarbar.in',
+                'https://astrodarbar.in'
+            ];
+            
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = '<h4>Testing URLs (check browser network tab for actual results):</h4>';
+            
+            testUrls.forEach(url => {
+                const urlDiv = document.createElement('div');
+                urlDiv.className = 'url-test';
+                urlDiv.innerHTML = `
+                    <strong>${url}</strong><br>
+                    <small>Expected: 301 redirect to https://astrodarbar.in</small><br>
+                    <button onclick="window.open('${url}', '_blank')">Test This URL</button>
+                `;
+                resultsDiv.appendChild(urlDiv);
+            });
+            
+            resultsDiv.innerHTML += `
+                <div class="status info">
+                    <strong>How to check:</strong><br>
+                    1. Open browser Developer Tools (F12)<br>
+                    2. Go to Network tab<br>
+                    3. Click each "Test This URL" button<br>
+                    4. Look for "301 Moved Permanently" status<br>
+                    5. Verify final URL is https://astrodarbar.in
+                </div>
+            `;
+        }
+        
+        function openRedirectChecker() {
+            window.open('https://httpstatus.io/', '_blank');
+        }
+        
+        function openDNSChecker() {
+            window.open('https://dnschecker.org/#A/astrodarbar.in', '_blank');
+        }
+        
+        // Auto-redirect if this is the www version
+        if (window.location.hostname === 'www.astrodarbar.in') {
+            setTimeout(() => {
+                window.location.replace('https://astrodarbar.in' + window.location.pathname + window.location.search);
+            }, 5000);
+            
+            document.body.innerHTML = `
+                <div style="text-align: center; padding: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-family: Arial, sans-serif;">
+                    <h1>🔄 Redirecting...</h1>
+                    <p>You accessed www.astrodarbar.in - redirecting to astrodarbar.in</p>
+                    <p>If redirect doesn't work, this confirms the hosting-level redirect issue.</p>
+                    <a href="https://astrodarbar.in" style="color: #fbbf24; font-size: 18px;">Click here if not redirected automatically</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
