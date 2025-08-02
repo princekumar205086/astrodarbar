@@ -294,6 +294,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="canonical" href="https://astrodarbar.in" />
         <meta name="theme-color" content="#7c3aed" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -302,6 +303,10 @@ export default function RootLayout({
         <meta name="application-name" content="Astrodarbar" />
         <meta name="msapplication-TileColor" content="#7c3aed" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="google-site-verification" content="-N7EGdN2odl110-wU-YASwVu8GPWprbEqEsFvxHnGEc" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
