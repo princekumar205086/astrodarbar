@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Test - Astrodarbar</title>
+    <script>
+        // JavaScript fallback redirect
+        if (window.location.hostname === 'www.astrodarbar.in') {
+            window.location.replace('https://astrodarbar.in' + window.location.pathname + window.location.search);
+        }
+    </script>
+</head>
+<body>
+    <h1>Redirect Test Page</h1>
+    <p>Current URL: <span id="currentUrl"></span></p>
+    <p>If you see this page at www.astrodarbar.in, the redirect is not working properly.</p>
+    
+    <script>
+        document.getElementById('currentUrl').textContent = window.location.href;
+    </script>
+</body>
+</html>

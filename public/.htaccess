@@ -1,20 +1,13 @@
 # Force HTTPS and remove www
 RewriteEngine On
 
-# Handle different scenarios for www to non-www redirect
-# First, handle HTTP www -> HTTPS non-www
-RewriteCond %{HTTPS} off
+# Redirect www to non-www (HTTP and HTTPS)
 RewriteCond %{HTTP_HOST} ^www\.astrodarbar\.in$ [NC]
 RewriteRule ^(.*)$ https://astrodarbar.in/$1 [R=301,L]
 
-# Handle HTTP non-www -> HTTPS non-www
+# Force HTTPS for non-www
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^astrodarbar\.in$ [NC]
-RewriteRule ^(.*)$ https://astrodarbar.in/$1 [R=301,L]
-
-# Handle HTTPS www -> HTTPS non-www
-RewriteCond %{HTTPS} on
-RewriteCond %{HTTP_HOST} ^www\.astrodarbar\.in$ [NC]
 RewriteRule ^(.*)$ https://astrodarbar.in/$1 [R=301,L]
 
 # Security headers
